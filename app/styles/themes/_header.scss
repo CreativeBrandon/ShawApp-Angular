@@ -1,0 +1,27 @@
+header.header{
+  padding:15px 0;
+  .navbar{
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  .navbar-header{
+    height: 80px;
+    width: 300px;
+    display: inline-block;
+    .logo{
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  nav{
+    display: inline-block;
+    width: 300px;
+    ul{
+      li{
+        display: inline-block;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="article-title">
+  <h1>Election Results</h1>
+  <!--<p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
+</div>
+
+<div class="carousel-container">
+  <button class="btn previous">Prev</button>
+  <button class="btn next">Next</button>
+  <ul class="carousel">
+    <li class="card" ng-repeat="riding in ridings">
+        <div class="results">
+          <table>
+            <caption>{{riding.name}}</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="name">Candidate</th>
+                <th scope="col">Party</th>
+                <th scope="col">Votes</th>
+                <th scope="col" class="percentage">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="person in riding.results | orderBy:'-votes'" ng:class="{true: 'first', false: ''}[$index==0]">
+                <td><!--<span ng-if="$index == 0"> 1.) </span>--> {{person.name}}</td>
+                <td>{{person.partyCode}}</td>
+                <td>{{person.votes}}</td>
+                <td>0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </li>
+  </ul>
+</div>
+
+<!--
+<div class="row marketing">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+</div>
+-->
