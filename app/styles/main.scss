@@ -1,4 +1,5 @@
 // bower:scss
+@import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,700);
@@ -110,8 +111,12 @@ body {
   .header {
     margin-bottom: 30px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  section.container{
+    width: 95%;
+    margin: 20px auto;
+    overflow: hidden;
   }
 }

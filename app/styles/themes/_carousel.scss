@@ -2,13 +2,25 @@
 .article-title{
   border-bottom:solid thin #F1F1F1;
 }
+
+.riding-info{
+  h2{
+    font-weight: bolder;
+    font-size: 25px;
+    padding-bottom:8px;
+  }
+  p{
+    color: #6C7A89;
+    margin-bottom:20px;
+  }
+}
 .carousel-container{
   position: relative;
   width: 100%;
   padding: 20px 0; 
   
   ul{
-    width: 500px;
+    width: 560px;
     min-height: 300px;
     margin:0 auto;
     overflow: hidden;
@@ -31,16 +43,22 @@
 
   .btn{
     border:none;
-    -webkit-border-radius: 0px; 
-    -moz-border-radius: 0px; 
-    border-radius: 0px;
+    -webkit-border-radius: 50%; 
+    -moz-border-radius: 50%; 
+    border-radius: 50%;
     background-color: $button-color;
     color: #FFF;
     position:absolute;
     top: 40%;
     text-align: center;
-    width: 5%;
-    height: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    &:hover,
+    &:focus{
+      cursor: pointer;
+      background-color: $button-hover-color;
+    }
     &.previous{
       left: 2%;
     }
@@ -83,6 +101,21 @@ table{
         &:last-child{
           text-align:center;
         }
+        &.partyMarker{
+          border-left:12px solid grey;
+        }
+        &.LIB{
+          border-color: red;
+        }
+        &.PC{
+          border-color: blue;
+        }
+        &.NDP{
+          border-color: orange;
+        }
+        &.GRN{
+          border-color: green;
+        }
       }
       &.first{
         background-color:#F1F1F1;
@@ -91,4 +124,44 @@ table{
     }
   }
 
+}
+@media screen and (max-width: 767px) {
+  .carousel-container {
+    ul{
+      width: 80%;
+    }
+    .btn{
+      width: 5%;
+      height: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .carousel-container {
+    ul{
+      width: 100%;
+    }
+    .btn{
+      width: 40%;
+      max-width: 40%;
+      height: 25px;
+      display: block;
+      position:relative;
+      -webkit-border-radius: 0%; 
+      -moz-border-radius: 0%; 
+      border-radius: 0%;
+      margin-bottom: 15px;
+      
+      &.previous{
+        float: left;
+        left: 0%;
+      }
+      &.next{
+        float: right;
+        right: 0%;
+      }
+    }
+  }
+    
 }

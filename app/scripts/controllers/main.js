@@ -14,6 +14,8 @@ angular.module('shawApp')
     var jsonDataLocal = 'http://localhost:9000/api/results-2011.js';
     var jsonDataRemote = 'http://static.globalnews.ca/content/test/results-2011.js';
 
+
+    // GET DATA FROM GLOBAL API
   	$http({method: 'GET', url: jsonDataLocal}).
     then(function successCallback(response) {
 
@@ -22,8 +24,8 @@ angular.module('shawApp')
         response.data = extractJSON( response.data );
       }
 
-      //add data to scope 
-      console.log( response.data.length );
+      //SUM UP CANDIDATE VOTES AND AD TO SCOPE
+      response.data = sumUpVotes( response.data );
       $scope.ridings = response.data;
 
 
@@ -32,23 +34,54 @@ angular.module('shawApp')
     });
     
 
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
+    // TOGGLE SLIDES
     $(".next").click(function(e){
-      nextSlide(e);
+      toggleSlide('next');
     });
     $(".previous").click(function(e){
-      prevSlide(e);
+      toggleSlide('previous');
     });
+
+
+    //TOGGLE SLIDES - ARROW KEY SUPPORT
+    var slider = $(".carousel-container")[0];
+    slider.onkeydown = function(event){
+
+      if (!event) event = window.event;
+      var code = event.keyCode;
+
+      if(event.charCode && code == 0) code = event.charCode;
+      switch(code){
+        case 37:
+          toggleSlide('previous');
+          break;
+        case 39:
+          toggleSlide('next');
+          break;
+      }
+    }
 
   });
 
-var extractJSON = function( string ){
+// SUM UP VOTES
+var sumUpVotes = function (data){
 
+  for(var ridings in data){
+    var candidates = data[ridings].results;
+    var totalVotes = 0;
+
+    for(var candidate in candidates){
+      totalVotes = parseInt(candidates[candidate].votes) + totalVotes;
+    }
+    data[ridings].totalVotes = totalVotes;
+  }
+
+  return data;
+}
+
+// EXTRACT JSON FROM STRING -- API RETURNS STRING JSON INSTEAD OF OBJ
+var extractJSON = function( string ){
     string = string.replace("gNews_getRidingDetailsCallback(", "(")
                        .replace("(", "")
                        .replace(")", "")
@@ -58,70 +91,31 @@ var extractJSON = function( string ){
     return json;
 }
 
-//Init Carousel 
-var carousel = function (){
-    //var carousel = function(){
-    $(".carousel li").first().addClass('selected');
-    var totalSlides = $(".carousel li").length;
-    alert( totalSlides );
-}
+//TOGGLE SLIDE
+var toggleSlide = function(direction){
 
-var nextSlide = function(e){
-  //console.log( e.currentTarget );
-  var count = $('.carousel li').length;
-  var currentSlide = $(".carousel li:visible");
-  var nextSlide = currentSlide.next('li');
-  var slideWidth = currentSlide.width();
-  var distance = slideWidth;
   var speed = 90;
-  //console.log(nextSlide);
+  var currentSlide = $(".carousel li:visible");
   currentSlide.hide();
 
+  //PREV OR NEXT DIRECTION VARS 
+  switch(direction){
+    case 'previous':
+      var nextSlide = currentSlide.prev('li');
+      var resetSlide = $(".carousel li:last-child");
+      $(".previous").focus();
+      break;
+    case 'next':
+      var nextSlide = currentSlide.next('li');
+      var resetSlide = $(".carousel li:first-child");
+      $(".next").focus();
+      break;
+  }
+
+  //SHOW NEXT SLIDE OR REST IF AT LAST SLIDE
   if(nextSlide.length === 0){
-    $(".carousel li:first-child").show(speed);
+    resetSlide.show(speed);
   }else{
     nextSlide.show(speed);
   }
-
-  /*var i = 1;
-  $(".carousel li").each(function(){
-    distance = slideWidth * i;
-    $(this).animate({"left": '-'+distance+'px' }, "slow");
-    i++;
-  });*/
-  //console.log( slideWidth );
-
 }
-
-var prevSlide = function(){
-  var currentSlide = $(".carousel li:visible");
-  var nextSlide = currentSlide.prev('li');
-  var speed = 90;
-  currentSlide.hide();
-
-  if(nextSlide.length === 0){
-    $(".carousel li:last-child").show(speed);
-  }else{
-    nextSlide.show(speed);
-  }
-
-}
-
-/*var cleanJSON = function(data){
-    // preserve newlines, etc - use valid JSON
-    // preserve newlines, etc - use valid JSON
-
-    data = data.replace(/\\n/g, "\\n")  
-                   .replace(/\\'/g, "\\'")
-                   .replace(/\\"/g, '\\"')
-                   .replace(/\\&/g, "\\&")
-                   .replace(/\\r/g, "\\r")
-                   .replace(/\\t/g, "\\t")
-                   .replace(/\\b/g, "\\b")
-                   .replace(/\\f/g, "\\f");
-    // remove non-printable and other non-valid JSON chars
-    data = data.replace(/[\u0000-\u0019]+/g,""); 
-    var data = JSON.parse(data);
-
-    return data;
-}*/

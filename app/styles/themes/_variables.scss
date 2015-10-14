@@ -41,12 +41,13 @@ body{
     background-image: linear-gradient(#f5f5f5,#f5f5f5 250px,#fefefe);
 }
 
-$primary:           #123C69 !default;
-$primary-light:     #034b81 !default;
-$primary-border:    #045999 !default;
-$button-color:      #e11c2e !default;
+$primary:             #123C69 !default;
+$primary-light:       #034b81 !default;
+$primary-border:      #045999 !default;
+$button-color:        #444 !default;
+$button-hover-color:  #e11c2e !default;
 
-$container-width:   730px !default;
+$container-width:     730px !default;
 
 
 h1{
@@ -55,5 +56,16 @@ h1{
   font-weight: bolder;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
 }
 
