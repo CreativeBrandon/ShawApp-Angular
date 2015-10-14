@@ -1,7 +1,8 @@
-# shaw
+# Shaw Election App
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+## Requirements
+
+Run `npm install` & `bower install` to fetch pkg dependencies
 
 ## Build & development
 
