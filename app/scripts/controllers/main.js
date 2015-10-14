@@ -16,7 +16,7 @@ angular.module('shawApp')
 
 
     // GET DATA FROM GLOBAL API
-  	$http({method: 'GET', url: jsonDataLocal}).
+  	$http({method: 'GET', url: jsonDataRemote}).
     then(function successCallback(response) {
 
       //Check data for valid JSON format
