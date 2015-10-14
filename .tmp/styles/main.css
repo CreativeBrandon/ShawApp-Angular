@@ -3504,26 +3504,32 @@ table tbody tr.first {
   }
 }
 @media screen and (max-width: 500px) {
-  /* line 142, ../../app/styles/themes/_carousel.scss */
+  /* line 141, ../../app/styles/themes/_carousel.scss */
+  .riding-info {
+    margin-bottom: 65px;
+    padding-left: 20px;
+  }
+
+  /* line 146, ../../app/styles/themes/_carousel.scss */
   .carousel-container ul {
     width: 100%;
   }
-  /* line 145, ../../app/styles/themes/_carousel.scss */
+  /* line 149, ../../app/styles/themes/_carousel.scss */
   .carousel-container .btn {
     width: 40%;
     max-width: 40%;
     height: 25px;
     display: block;
-    position: relative;
+    top: 90px;
     border-radius: 0%;
     margin-bottom: 15px;
   }
-  /* line 156, ../../app/styles/themes/_carousel.scss */
+  /* line 161, ../../app/styles/themes/_carousel.scss */
   .carousel-container .btn.previous {
     float: left;
     left: 0%;
   }
-  /* line 160, ../../app/styles/themes/_carousel.scss */
+  /* line 165, ../../app/styles/themes/_carousel.scss */
   .carousel-container .btn.next {
     float: right;
     right: 0%;

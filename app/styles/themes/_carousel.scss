@@ -138,6 +138,10 @@ table{
 }
 
 @media screen and (max-width: 500px) {
+  .riding-info{
+    margin-bottom:65px;
+    padding-left:20px;
+  }
   .carousel-container {
     ul{
       width: 100%;
@@ -147,7 +151,8 @@ table{
       max-width: 40%;
       height: 25px;
       display: block;
-      position:relative;
+      //position:relative;
+      top:90px;
       -webkit-border-radius: 0%; 
       -moz-border-radius: 0%; 
       border-radius: 0%;
