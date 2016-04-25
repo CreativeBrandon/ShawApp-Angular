@@ -10,7 +10,6 @@
 angular.module('shawApp')
   .controller('MainCtrl', function ($scope, $http) {
 
-    var jsonDataLocal = 'http://localhost:9000/api/results-2011-2.js';
     var jsonDataLocal = 'http://localhost:9000/api/results-2011.js';
     var jsonDataRemote = 'http://static.globalnews.ca/content/test/results-2011.js';
 
@@ -32,7 +31,7 @@ angular.module('shawApp')
     }, function errorCallback(response) {
         console.log(response);
     });
-    
+
 
 
     // TOGGLE SLIDES
@@ -98,7 +97,7 @@ var toggleSlide = function(direction){
   var currentSlide = $(".carousel li:visible");
   currentSlide.hide();
 
-  //PREV OR NEXT DIRECTION VARS 
+  //PREV OR NEXT DIRECTION VARS
   switch(direction){
     case 'previous':
       var nextSlide = currentSlide.prev('li');

@@ -17,8 +17,8 @@
 .carousel-container{
   position: relative;
   width: 100%;
-  padding: 20px 0; 
-  
+  padding: 20px 0;
+
   ul{
     width: 560px;
     min-height: 300px;
@@ -31,7 +31,6 @@
       list-style-type: none;
       display: none;
       overflow: hidden;
-      overflow-y: scroll;
       white-space: nowrap;
       width: 100%;
       min-height: 250px;
@@ -43,8 +42,8 @@
 
   .btn{
     border:none;
-    -webkit-border-radius: 50%; 
-    -moz-border-radius: 50%; 
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     background-color: $button-color;
     color: #FFF;
@@ -64,7 +63,7 @@
     }
     &.next{
       right: 2%;
-    } 
+    }
   }
 }
 
@@ -89,7 +88,7 @@ table{
         }
         &.percentage{
           //width: 20%;
-          text-align: center; 
+          text-align: center;
         }
       }
     }
@@ -153,11 +152,11 @@ table{
       display: block;
       //position:relative;
       top:90px;
-      -webkit-border-radius: 0%; 
-      -moz-border-radius: 0%; 
+      -webkit-border-radius: 0%;
+      -moz-border-radius: 0%;
       border-radius: 0%;
       margin-bottom: 15px;
-      
+
       &.previous{
         float: left;
         left: 0%;
@@ -168,5 +167,5 @@ table{
       }
     }
   }
-    
+
 }
